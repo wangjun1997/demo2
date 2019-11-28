@@ -1,0 +1,39 @@
+<!--
+ @name luntan
+ @author wangjun
+ @time 2019/11/2717:36
+ -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>用户信息展示</h1>
+    <table border="1" class="table">
+        <tr>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>邮箱</td>
+            <td>角色</td>
+            <td>级别</td>
+            <td>创建时间</td>
+            <td>修改时间</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="user:${pageInfo.list}">
+            <td th:text="${user.userName}">用户名</td>
+            <td th:text="${user.userPassword}">密码</td>
+            <td th:text="${user.userMail}">邮箱</td>
+            <td th:text="${user.userRole}">角色</td>
+            <td th:text="${user.userLevel}">级别</td>
+            <td th:text="${#dates.format(user.gmtCreate,'yyyy-MM-dd HH:mm:ss')}">创建时间</td>
+            <td th:text="${#dates.format(user.gmtModified,'yyyy-MM-dd HH:mm:ss')}">修改时间</td>
+            <td><a th:href="@{user/delete(id=${user.id})}">删除</a></td>
+        </tr>
+    </table>
+  <div th:insert="page.html"></div>
+</body>
+</html>
