@@ -21,22 +21,24 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+    @Autowired(required = true)
     private IUserService userService;
 
     @RequestMapping("/list")
     public String listStu(MyPage page, Model model){
-
+        System.out.println(page);
+        page.setUrl("user/list");
         PageInfo<TUser> lit = userService.select(page);
         System.out.println(lit);
+        model.addAttribute("url","user/list");
         model.addAttribute("pageInfo",lit);
         return "list";
     }
 
-    @RequestMapping("/list2")
+    @RequestMapping("/lis")
     public String listStu2( Model model){
 
-       List<TUser> lit = userService.select2();
+       List<TUser> lit = userService.list();
         System.out.println(lit);
         model.addAttribute("users",lit);
         return "list";

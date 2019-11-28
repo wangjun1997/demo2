@@ -32,8 +32,9 @@
                     //首次不执行
                     if(!first){
 
-                        // location.href="${url}?currentPage="+obj.curr+"&pageSize="+obj.limit;
-                       // $("#${param.bodyId}").load("|${url}?currentPage=|"+obj.curr+"&pageSize="+obj.limit);
+                      // window.location.href='[[${url}]]?currentPage=[[${pageInfo.pageNum}]]&pageSize=[[${pageInfo.pageSize}]]';
+                      location.href="[[${url}]]?currentPage="+obj.curr+"&pageSize="+obj.limit;
+
                     }
                 }
             });

@@ -1,12 +1,13 @@
 package com.example.demo.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @Author wangjun
  * @Date 2019/11/8
  */
-public class MyPage {
+public class MyPage implements Serializable {
     private Integer currentPage = 1;
 
     private Integer pageSize = 3;
@@ -72,4 +73,15 @@ public class MyPage {
         this.url = url;
     }
 
+    @Override
+    public String toString() {
+        return "MyPage{" +
+                "currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
+                ", totalCount=" + totalCount +
+                ", totalPage=" + totalPage +
+                ", list=" + list +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

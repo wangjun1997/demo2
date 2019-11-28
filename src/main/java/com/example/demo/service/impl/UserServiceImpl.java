@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.dao.UserMapper;
 import com.example.demo.entity.MyPage;
@@ -20,12 +21,13 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, TUser> implements IUserService {
 
-    @Autowired
+    @Autowired(required = true)
     private UserMapper userMapper;
 
     @Override
     public PageInfo<TUser> select(MyPage page) {
         PageHelper.startPage(page.getCurrentPage(),page.getPageSize());
+
         List<TUser> userList = userMapper.getUserList();
         return new PageInfo<>(userList);
     }
